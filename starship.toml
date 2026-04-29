@@ -1,0 +1,19 @@
+# --- CONFIGURAÇÃO STARSHIP GABRYEL ---
+
+# O módulo 'os' é o que mostra o logo da distro (o laço do CachyOS/Arch)
+# Definimos como true para limpar o visual
+[os]
+disabled = true
+
+[character]
+# O símbolo que aparece onde você digita
+# Usamos o código hexadecimal #262626 para bater com as linhas do seu config.fish
+success_symbol = "[❯](bold #262626)"
+error_symbol = "[❯](bold red)"
+
+[directory]
+# Define a cor do caminho da pasta (ex: ~/Downloads) como cinza claro
+style = "bold #e0e0e0"
+# Remove ícones extras de pastas para manter o visual "Stealth"
+truncation_length = 3
+truncate_to_repo = true

@@ -1,0 +1,68 @@
+/**
+ * TEMA ROFI - GABRYEL (STEALTH VERSION)
+ **/
+
+configuration {
+    modi:                       "drun,run";
+    show-icons:                 true;
+    display-drun:               " ";
+    drun-display-format:        "{name}";
+    font:                       "JetBrainsMono Nerd Font 11";
+}
+
+* {
+    bg:          #000000;
+    bg-alt:      #1a1a1a;
+    fg:          #e0e0e0;
+    selected:    #262626; /* Cinza da sua pílula do Fish */
+    border:      #262626;
+    
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+window {
+    width:            400px;
+    background-color: @bg;
+    border:           2px;
+    border-color:     @border;
+    border-radius:    12px;
+}
+
+mainbox {
+    padding: 10px;
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    background-color: @bg-alt;
+    margin:           0px 0px 10px 0px;
+    border-radius:    8px;
+    padding:          10px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    margin: 0px 5px 0px 0px;
+}
+
+listview {
+    lines:      8;
+    columns:    1;
+    fixed-height: false;
+}
+
+element {
+    padding:       8px;
+    border-radius: 8px;
+}
+
+element selected {
+    background-color: @selected;
+    text-color:       #ffffff;
+}
+
+element-icon {
+    size: 24px;
+    margin: 0 10px 0 0;
+}

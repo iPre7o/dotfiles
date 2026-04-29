@@ -1,0 +1,37 @@
+configuration {
+    modi: "window";
+    show-icons: true;
+    window-format: "{w} · {c} · {t}";
+}
+
+* {
+    bg: #000000;
+    fg: #e0e0e0;
+    accent: #262626;
+    border-col: #444444;
+    
+    background-color: @bg;
+    text-color: @fg;
+}
+
+window {
+    width: 600px;
+    border: 2px;
+    border-color: @border-col;
+    border-radius: 10px;
+}
+
+element {
+    padding: 8px;
+    border-radius: 5px;
+}
+
+element selected {
+    background-color: @accent;
+    text-color: @fg;
+}
+
+element-icon {
+    size: 24px;
+    padding: 0 10px 0 0;
+}
