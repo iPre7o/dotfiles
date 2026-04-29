@@ -1,0 +1,187 @@
+{
+    // Define a barra no topo e acima das janelas
+    "layer": "top",
+    "position": "top",
+    //"height": 50,        // Altura total da barra
+    "margin-top": 0,     // Distância do topo da tela
+    "margin-left": 0,   // Distância da esquerda
+    "margin-right": 0,  // Distância da direita
+    "spacing": 0,        // Espaço entre módulos (controlaremos isso no CSS)
+
+    // Organização dos blocos
+    "modules-left": ["custom/power","clock","hyprland/window"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["pulseaudio", "network", "battery", "tray"],
+
+    // --- Configuração dos Módulos ---
+
+ "hyprland/workspaces": {
+        // 1. O FORMATO PRINCIPAL
+        // Trocámos o {name} pelo {icon}. Assim, em vez de mostrar os números (1, 2, 3),
+        // a barra vai utilizar as "bolinhas" definidas no bloco 'format-icons' abaixo.
+        // O {windows} continua aqui para mostrar o ícone do programa (Firefox, Spotify) ao lado.
+        "format": "{icon}{windows}", 
+        
+        // 2. O ESTILO DAS BOLINHAS (Estado das áreas de trabalho)
+        "format-icons": {
+            "active": "󰫥 ",  // A área que está a ver e a usar neste momento.
+            "empty": "󰫤 ",   // Áreas que estão completamente vazias.
+            "default": ""  // Áreas que têm programas abertos, mas estão em segundo plano.
+        },
+
+        // 3. AÇÃO DO RATO
+        // Permite-lhe clicar numa bolinha com o rato para saltar diretamente para essa área.
+        "on-click": "activate",
+
+        // 4. ÍCONE DE SALVAGUARDA (Fallback)
+        // Se abrir um programa novo ou um jogo que não esteja na lista abaixo, 
+        // a barra mostra este ponto de interrogação em vez de bugar o visual.
+        "window-rewrite-default": "",
+
+        // 5. MAPEAMENTO DE PROGRAMAS (O seu dicionário de ícones)
+        // A regra é: "Se a classe do programa for X, mostra o ícone Y".
+        // Para adicionar mais, coloque uma vírgula na última linha e adicione a nova abaixo.
+        "window-rewrite": {
+            "class<vesktop>": "",
+            "class<firefox>": "",
+            "class<Spotify>": "",
+            "class<code-oss>": "󰨞",
+            "class<obsidian>": "󱓧",
+            "class<kitty>": ""
+            
+        }, // <- Note que esta vírgula agora é OBRIGATÓRIA porque temos outro bloco a seguir.
+
+        // 6. ÁREAS PERSISTENTES (O truque para ver as áreas vazias)
+        // O "*" aplica a regra a qualquer monitor que esteja a usar.
+        // A lista [1, 2, 3, 4, 5] força a barra a mostrar sempre estas 5 áreas,
+        // aplicando o ícone "empty" (bolinha vazada) caso não haja nada aberto nelas.
+        "persistent-workspaces": {
+            "*": [1, 2, 3, 4, 5]
+        }
+    },
+    "clock": {
+        "format": "{:%H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    // LISTA DE MÓDULOS DA DIREITA
+    // Adicione ou remova os nomes abaixo para controlar a ordem na barra
+    "modules-right": [
+        "tray",
+        "cpu",
+        "memory",
+        "custom/gpu", // Módulo de GPU (AMD)
+        "pulseaudio", 
+        "network", 
+        "backlight", 
+        "battery"  
+    ],
+
+// =========================================
+    // MONITORAMENTO DE HARDWARE
+    // =========================================
+
+    // Uso do Processador (CPU)
+    "cpu": {
+        "format": "  {usage}%", // Ícone de chip + porcentagem
+        "interval": 2            // Atualiza a cada 2 segundos
+    },
+
+    // Uso da Memória (RAM)
+    "memory": {
+        "format": "  {used:0.1f}G", // Ícone de pente de RAM + uso em GB
+        "interval": 2
+    },
+
+    // Uso da Placa de Vídeo (GPU) - Específico para AMD
+    "custom/gpu": {
+        "exec": "cat /sys/class/drm/card0/device/gpu_busy_percent", // Lê o uso da sua AMD diretamente
+        "format": "󰾲  {}%", // Ícone de placa de vídeo
+        "return-type": "",
+        "interval": 2
+    },
+
+    // =========================================
+    // CONFIGURAÇÃO DOS MÓDULOS (LADO DIREITO)
+    // =========================================
+
+    // Controle de Áudio (PulseAudio)
+    "pulseaudio": {
+        "format": "{icon} {volume}%", // Exemplo: 󰕾 80%
+        "format-muted": "󰝟",          // Ícone quando estiver no mudo
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"] // Ícones que mudam conforme o volume
+        },
+        "on-click": "pavucontrol"     // Abre o painel de som ao clicar
+    },
+
+    // Status da Rede (Internet)
+    "network": {
+        "format-wifi": " {essid}",    // Ícone + nome do Wi-Fi
+        "format-ethernet": "󰈀",         // Ícone para cabo de rede
+        "format-disconnected": "󰖪",    // Ícone para sem internet
+        "tooltip-format": "{ifname} via {gwaddr}", // Info extra ao passar o mouse
+        "format-linked": "{ifname} (No IP)"
+    },
+
+    // Brilho da Tela (Backlight)
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"] // Ícones do brilho baixo ao alto
+    },
+
+    // Status da Bateria
+    "battery": {
+        "states": {
+            "warning": 30,   // Fica com estado de "aviso" em 30%
+            "critical": 15   // Fica com estado "crítico" em 15%
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󱐋 {capacity}%", // Ícone de raio ao carregar
+        "format-plugged": " {capacity}%",  // Ícone de tomada quando carregado
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+
+    // Relógio e Data
+    "clock": {
+        "format": "{:%H:%M}",      // Formato padrão: 19:30
+        "format-alt": "󰃭 {:%d/%m/%Y}", // Clique para ver a data: 28/04/2026
+        "tooltip-format": "<tt><small>{calendar}</small></tt>" // Mostra calendário no hover
+    },
+
+   // =========================================
+    // BANDEJA DO SISTEMA (TRAY)
+    // =========================================
+    "tray": {
+        "icon-size": 20,    // Tamanho dos ícones (Steam, Discord, etc)
+        "spacing": 10,     // Espaço entre um ícone e outro dentro da pílula
+        "show-passive-icons": true
+    },
+    // =========================================
+    // BOTÃO DE ENERGIA (POWER MENU)
+    // =========================================
+    "custom/power": {
+        "format": "󰣇",              // Ícone de Power da Nerd Fonts
+        "tooltip": false,            // Não precisa de texto ao passar o mouse
+        "on-click": "wlogout",       // Comando para abrir o menu de desligar
+        "interval": 86400            // Não precisa atualizar (estático)
+    },
+    // =========================================
+    // TÍTULO DA JANELA NO CANTO
+    // =========================================
+    "hyprland/window": {
+        "format": "󰖲  {class}", // Ícone de janela + Classe do app (ex: Firefox)
+        "separate-outputs": true,
+        "rewrite": {
+            // Isso limpa os nomes dos programas para não ficarem feios
+            "": "Desktop",          // O que aparece quando não tem nada aberto
+            "firefox": "Firefox",
+            "code-oss": "VS Code",
+            "discord": "Discord",
+            "Spotify": "Spotify",
+            "kitty": "Terminal",
+            "org.pulseaudio.pavucontrol": "Áudio"
+        },
+        "max-length": 25 // Limita o tamanho para o nome não "atropelar" o resto da barra
+    },
+}

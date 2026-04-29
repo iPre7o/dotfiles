@@ -1,0 +1,166 @@
+/* =========================================
+   CONFIGURAÇÕES GERAIS
+   ========================================= */
+* {
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 20px; 
+    border: none;
+    border-radius: 0;
+}
+
+/* 1. A BARRA PRINCIPAL */
+window#waybar {
+    background-color: #000000; /* Preto absoluto na barra toda */
+    border-radius: 12px;
+    color: #e0e0e0;
+}
+
+/* =========================================
+   MÓDULO DE WORKSPACES (ÁREAS DE TRABALHO)
+   ========================================= */
+
+/* A "pílula" que guarda os ícones */
+#workspaces {
+    background-color: #1c1b1b; /* Cinza escuro para contrastar com a barra preta */
+    border-radius: 12px;       
+    margin: 4px 6px;           
+    padding: 4px 6px;          
+}
+
+/* Configuração geral dos botões (ícones) */
+#workspaces button {
+    color: #999999;            /* Cor dos ícones inativos */
+    background: transparent;   
+    
+    /* TAMANHO DO ÍCONE E ESPAÇAMENTO */
+    /* Importante: Cada linha termina com ponto e vírgula (;) */
+    font-size: 20px;           /* Tamanho do ícone maior */
+    min-height: 35px;          /* Altura mínima para acomodar o ícone de 20px */
+    padding: 0px 14px;         /* Espaçamento nas laterais para centralizar */
+    
+    margin: 0 2px;             
+    border-radius: 8px;        
+    transition: all 0.3s ease; 
+}
+
+/* Áreas vazias (onde aparece apenas a bolinha) */
+#workspaces button.empty {
+    color: #4d4d4d; /* Cinza apagado para não chamar atenção */
+}
+
+/* O Botão Ativo (a área de trabalho atual) */
+#workspaces button.active {
+    background-color: #4d4d4d; /* Destaque no fundo do botão ativo */
+    color: #ffffff;            /* Ícone totalmente branco */
+    font-weight: bold;
+    
+    /* ALINHAMENTO FINO: Cima | Direita | Baixo | Esquerda */
+    padding: 0px 14px 0px 14px; 
+}
+
+/* Efeito ao passar o mouse */
+#workspaces button:hover {
+    background-color: #4d4d4d; 
+    color: #ffffff;            
+}
+
+/* Notificações de urgência */
+#workspaces button.urgent {
+    background-color: #ff5555; /* Vermelho para alertas */
+    color: #ffffff;
+}
+/* =========================================
+   MÓDULOS DA DIREITA (Pílulas de Status)
+   ========================================= */
+
+/* Estilo comum para todas as pílulas da direita */
+#cpu,
+#memory,
+#custom-gpu,
+#pulseaudio,
+#network,
+#backlight,
+#battery,
+#clock,
+#tray{
+    background-color: #262626; /* Cinza igual aos workspaces */
+    color: #ffffff;            /* Texto e ícones brancos */
+    border-radius: 12px;       /* Bordas arredondadas */
+    padding: 0px 15px;         /* Espaço nas laterais */
+    margin: 4px 3px;           /* Espaço entre as pílulas */
+    font-size: 16px;           /* Tamanho da fonte para caber os números */
+    min-height: 42px;          /* Mesma altura dos workspaces */
+}
+
+/* Deixar o relógio um pouco mais gordinho no final */
+#clock {
+    font-weight: bold;
+    margin-right: 10px; 
+}
+
+/* Estilo para quando a bateria estiver acabando */
+#battery.warning {
+    color: #f1fa8c; 
+}
+
+#battery.critical:not(.charging) {
+    background-color: #ff5555; 
+}
+
+/* Ajuste fino para a bandeja do sistema */
+#tray {
+    padding: 0px 10px;
+}
+/* Cores opcionais para quando o PC estiver "fritando" */
+#cpu.critical, #memory.critical {
+    color: #ff5555; /* Fica vermelho se o uso estiver muito alto */
+}
+
+#custom-gpu {
+    /* Um leve ajuste se o ícone da GPU parecer menor que os outros */
+    font-size: 18px; 
+}
+/* =========================================
+   ESTILO DA BANDEJA (TRAY)
+   ========================================= */
+
+#tray {
+    background-color: #262626; /* Cinza das outras pílulas */
+    border-radius: 12px;
+    padding: 0px 12px;         /* Espaço interno para os ícones não tocarem as bordas */
+    margin: 4px 3px;           /* Espaçamento externo entre pílulas */
+    min-height: 42px;          /* Mesma altura dos seus Workspaces e Hardware */
+}
+
+/* Ajuste fino para os ícones dentro da bandeja */
+#tray > .passive,
+#tray > .active,
+#tray > .needs-attention {
+    background-color: transparent;
+}
+
+#tray > .needs-attention {
+    /* Se um app precisar de atenção (ex: mensagem no Discord), o ícone brilha */
+    border-bottom: 2px solid #ff5555; 
+}
+/* Forçando a pílula de energia individualmente */
+#custom-power {
+    background-color: #262626;
+    color: #ffffff;
+    border-radius: 12px;
+    margin: 4px 3px;
+    padding: 0px 15px;
+}
+
+/* Efeito de hover para garantir que o CSS está lendo o módulo */
+#custom-power:hover {
+    background-color: #ff5555;
+    color: #ffffff;
+}
+#window {
+    background-color: transparent; /* Remove a pílula */
+    color: #ffffff;               /* Texto branco para destacar no fundo preto */
+    margin: 0 10px;               /* Afasta um pouco da pílula dos workspaces */
+    font-size: 15px;              /* Um pouco menor para não brigar com os ícones */
+    font-weight: 500;             /* Deixa a fonte com um peso médio, elegante */
+}
