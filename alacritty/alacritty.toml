@@ -1,0 +1,26 @@
+[window]
+padding = { x = 20, y = 20 }
+dynamic_padding = true
+opacity = 0.85
+blur = true # Funciona em conjunto com o Hyprland
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 11.0
+
+[colors.primary]
+background = "#1a1a1a"
+foreground = "#e0e0e0"
+
+[colors.normal]
+black   = "#1a1a1a"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#f5c2e7"
+cyan    = "#94e2d5"
+white   = "#bac2de"
+
+[cursor]
+style = { shape = "Block", blinking = "On" }

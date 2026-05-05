@@ -167,6 +167,7 @@
         "format": "",              // Ícone de Power da Nerd Fonts
         "tooltip": false,            // Não precisa de texto ao passar o mouse
         "on-click": "rofi -show drun -theme ~/.config/rofi/menu.rasi",
+        "on-click-right": "~/.config/rofi/powermenu.sh",
         "interval": 86400            // Não precisa atualizar (estático)
     },
     // =========================================
