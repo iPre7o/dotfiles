@@ -1,19 +1,42 @@
-# --- CONFIGURAÇÃO STARSHIP GABRYEL ---
+# --- CONFIGURAÇÃO STARSHIP GABRYEL (STEALTH + ICONS) ---
 
-# O módulo 'os' é o que mostra o logo da distro (o laço do CachyOS/Arch)
-# Definimos como true para limpar o visual
+add_newline = false
+
+# Ordem: OS -> Pasta -> Git Branch -> Git Status -> Símbolo
+format = """
+$os$directory$git_branch$git_status$character
+"""
+
 [os]
-disabled = true
+disabled = false
+format = "[$symbol]($style) "
+style = "bold blue"
 
-[character]
-# O símbolo que aparece onde você digita
-# Usamos o código hexadecimal #262626 para bater com as linhas do seu config.fish
-success_symbol = "[❯](bold #262626)"
-error_symbol = "[❯](bold red)"
+[os.symbols]
+Arch = " "
+CachyOS = " "
+Linux = " "
 
 [directory]
-# Define a cor do caminho da pasta (ex: ~/Downloads) como cinza claro
 style = "bold #e0e0e0"
-# Remove ícones extras de pastas para manter o visual "Stealth"
+format = "[$path]($style) "
 truncation_length = 3
 truncate_to_repo = true
+
+[git_branch]
+symbol = " "
+style = "bold white"
+format = "on [$symbol$branch]($style) "
+
+[git_status]
+style = "bold red"
+# Removi os colchetes duplos que causaram o erro
+format = "([$all_status$ahead_behind]($style) )"
+modified = "*"
+staged = "+"
+untracked = "?"
+deleted = "✘"
+
+[character]
+success_symbol = "[❯](bold #262626)"
+error_symbol = "[❯](bold red)"
