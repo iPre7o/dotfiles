@@ -1,0 +1,84 @@
+configuration {
+    modi: "drun";
+    show-icons: true;
+    display-drun: "";
+    drun-display-format: "{name}";
+    font: "JetBrainsMono Nerd Font 11";
+}
+
+@theme "/dev/null"
+
+* {
+    bg: #1a1a1a;
+    fg: #e0e0e0;
+    accent: #262626;
+    border-col: #262626;
+    
+    background-color: transparent;
+    text-color: @fg;
+    margin: 0;
+    padding: 0;
+    spacing: 0;
+}
+
+window {
+    /* === POSICIONAMENTO NO CANTO SUPERIOR ESQUERDO === */
+    location:       north west;  /* Posiciona no Noroeste (Superior Esquerdo) */
+    anchor:         north west;  /* Define a âncora da janela no Noroeste */
+    
+    /* Ajustes finos: afasta um pouco das bordas da tela e da Waybar */
+    x-offset:       10px;        /* 10 pixels da esquerda */
+    y-offset:       10px;        /* 10 pixels do topo (se sua Waybar estiver no topo, aumente aqui) */
+
+    width: 380px; /* Largura um pouco menor para ficar mais com cara de menu lateral */
+    height: 500px; /* Altura fixa */
+    
+    background-color: @bg;
+    border: 2px;
+    border-color: @border-col;
+    border-radius: 0px; /* Cantos retos Stealth */
+}
+
+inputbar {
+    padding: 12px;
+    background-color: @bg;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    padding: 0px 12px 0px 5px;
+    vertical-align: 0.5;
+}
+
+entry {
+    placeholder: "Pesquisar...";
+    text-color: @fg;
+}
+
+listview {
+    columns: 1;
+    lines: 10; /* Aumentei o número de linhas já que o menu é mais alto */
+    fixed-height: true;
+    padding: 5px;
+}
+
+element {
+    padding: 8px;
+    spacing: 10px;
+    border-radius: 0px;
+}
+
+element selected {
+    background-color: @accent;
+    text-color: #ffffff;
+    border: 1px;
+    border-color: #ffffff;
+}
+
+element-icon {
+    size: 28px; /* Ícones um pouco maiores */
+}
+
+element-text {
+    vertical-align: 0.5;
+}

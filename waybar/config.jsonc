@@ -25,7 +25,7 @@
         // 2. O ESTILO DAS BOLINHAS (Estado das áreas de trabalho)
         "format-icons": {
             "active": "󰫥 ",  // A área que está a ver e a usar neste momento.
-            "empty": "󰫤 ",   // Áreas que estão completamente vazias.
+            "empty": "󰫤",   // Áreas que estão completamente vazias.
             "default": ""  // Áreas que têm programas abertos, mas estão em segundo plano.
         },
 
@@ -43,6 +43,8 @@
         // Para adicionar mais, coloque uma vírgula na última linha e adicione a nova abaixo.
         "window-rewrite": {
             "class<vesktop>": "",
+            "class<steam>": "",
+            "class<org.kde.dolphin>": "󱢴",
             "class<firefox>": "",
             "class<Spotify>": "",
             "class<code-oss>": "󰨞",
@@ -119,6 +121,7 @@
     "network": {
         "format-wifi": " {essid}",    // Ícone + nome do Wi-Fi
         "format-ethernet": "󰈀",         // Ícone para cabo de rede
+        "on-click": "nm-connection-editor",
         "format-disconnected": "󰖪",    // Ícone para sem internet
         "tooltip-format": "{ifname} via {gwaddr}", // Info extra ao passar o mouse
         "format-linked": "{ifname} (No IP)"
@@ -158,12 +161,12 @@
         "show-passive-icons": true
     },
     // =========================================
-    // BOTÃO DE ENERGIA (POWER MENU)
+    // BOTÃO ARCH NO CANTO
     // =========================================
     "custom/power": {
-        "format": "󰣇",              // Ícone de Power da Nerd Fonts
+        "format": "",              // Ícone de Power da Nerd Fonts
         "tooltip": false,            // Não precisa de texto ao passar o mouse
-        "on-click": "wlogout",       // Comando para abrir o menu de desligar
+        "on-click": "rofi -show drun -theme ~/.config/rofi/menu.rasi",
         "interval": 86400            // Não precisa atualizar (estático)
     },
     // =========================================
