@@ -20,7 +20,7 @@
         },
         {
             "type": "custom",
-            "format": "┌─────────── Software ───────────┐",
+            "format": "┌──────────────────────────── Software ────────────────────────────┐",
             "paddingLeft": 2
         },
         { "type": "os", "key": "  󰣇 OS", "paddingLeft": 2 },
@@ -31,7 +31,7 @@
         { "type": "uptime", "key": "  󱎫 Uptime", "paddingLeft": 2 },
         {
             "type": "custom",
-            "format": "├─────────── Hardware ───────────┤",
+            "format": "├──────────────────────────── Hardware ────────────────────────────┤",
             "paddingLeft": 2
         },
         { "type": "cpu", "key": "  󰻠 CPU", "paddingLeft": 2 },
@@ -40,7 +40,7 @@
         { "type": "disk", "key": "  󰋊 Disk", "paddingLeft": 2 },
         {
             "type": "custom",
-            "format": "└────────────────────────────────┘",
+            "format": "└──────────────────────────────────────────────────────────────────┘",
             "paddingLeft": 2
         },
         "break",

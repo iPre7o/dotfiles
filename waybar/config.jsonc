@@ -43,6 +43,8 @@
         // Para adicionar mais, coloque uma vírgula na última linha e adicione a nova abaixo.
         "window-rewrite": {
             "class<vesktop>": "",
+            "class<Alacritty>": "",
+            "class<gimp>": "",
             "class<steam>": "",
             "class<org.kde.dolphin>": "󱢴",
             "class<firefox>": "",
