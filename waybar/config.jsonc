@@ -47,10 +47,18 @@
             "class<gimp>": "",
             "class<steam>": "",
             "class<org.kde.dolphin>": "󱢴",
+            "class<Mysql-workbench-bin>": "",
             "class<firefox>": "",
             "class<Spotify>": "",
             "class<code-oss>": "󰨞",
             "class<obsidian>": "󱓧",
+            "class<libreoffice-startcenter>": "",
+            "class<libreoffice-writer>": "",
+            "class<libreoffice-calc>": "",
+            "class<libreoffice-impress>": "",
+            "class<libreoffice-draw>": "",
+            "class<libreoffice-base>": "",
+            "class<libreoffice-math>": "",
             "class<kitty>": ""
             
         }, // <- Note que esta vírgula agora é OBRIGATÓRIA porque temos outro bloco a seguir.
