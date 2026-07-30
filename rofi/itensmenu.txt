@@ -1,6 +1,0 @@
-firefox
-kitty
-obsidian
-code
-thunar
-spotify
